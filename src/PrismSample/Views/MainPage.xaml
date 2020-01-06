@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="Custom Controls Xamarin"
+             xmlns:local="clr-namespace:CustomControl;assembly=CustomControl"
+             x:Class="PrismSample.Views.MainPage">
+  <ContentPage.Resources>
+
+    <ControlTemplate x:Key="sampleTemplate" >
+      <StackLayout  HeightRequest="50"  BackgroundColor="AliceBlue" >
+        <Label  Text="{TemplateBinding Title}"  HeightRequest="40" TextColor="Red" ></Label>
+      </StackLayout>
+    </ControlTemplate>
+    
+    <Style TargetType="local:ProgressBar" >
+      <Setter Property="HeightRequest" Value="200" ></Setter>
+      <Setter Property="ControlTemplate" Value="{StaticResource sampleTemplate}" ></Setter>
+    </Style>
+    
+  </ContentPage.Resources>
+
+    <StackLayout HorizontalOptions="Center"
+                 VerticalOptions="Center">
+    <local:ProgressBar Title="newtitle"     />
+
+
+
+  </StackLayout>
+
+</ContentPage>
