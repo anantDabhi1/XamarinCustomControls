@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Name="NumericControl"
+             x:Class="CustomControl.NumericUpDownControl">
+  <ContentView.Content>
+    <Grid BindingContext="{x:Reference NumericControl}" BackgroundColor="{Binding Controlbackgroundcolor}" >
+      <Grid.ColumnDefinitions>
+        <ColumnDefinition Width="Auto"/>
+        <ColumnDefinition Width="*"/>
+        <ColumnDefinition Width="Auto"/>
+      </Grid.ColumnDefinitions>
+
+      <Image Grid.Column="0" Margin="{Binding ControlMargin}" >
+        <Image.Source>
+          <FontImageSource FontFamily="{Binding FontFamily}" Glyph="{Binding DecrementIcon}" Color="{Binding TextColor}" />
+        </Image.Source>
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="TapGestureRecognizer_MinusButton" />
+        </Image.GestureRecognizers>
+      </Image>
+
+      <Editor x:Name="EditorValue" Grid.Column="1" Text="{Binding Value}" Placeholder="{Binding Watermark}" PlaceholderColor="{Binding WatermarkColor}" Keyboard="Numeric" 
+                    MaxLength="{Binding MaximumDigits}" FontSize="{Binding FontSize}" TextColor="{Binding TextColor}" FontAttributes="{Binding FontAttribute}"
+                    Unfocused="EditorValue_Unfocused" IsEnabled="{Binding IsEditable}" TextChanged="EditorValue_TextChanged" >
+      </Editor>
+
+      <Image Grid.Column="2" Margin="{Binding ControlMargin}">
+        <Image.Source>
+          <FontImageSource FontFamily="{Binding FontFamily}" Glyph="{Binding IncrementIcon}" Color="{Binding TextColor}" />
+        </Image.Source>
+        <Image.GestureRecognizers>
+          <TapGestureRecognizer Tapped="TapGestureRecognizer_PlusButton" />
+        </Image.GestureRecognizers>
+      </Image>
+    </Grid>
+  </ContentView.Content>
+</ContentView>

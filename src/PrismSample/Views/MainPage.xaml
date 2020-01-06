@@ -14,20 +14,16 @@
         <Label  Text="{TemplateBinding Title}"  HeightRequest="40" TextColor="Red" ></Label>
       </StackLayout>
     </ControlTemplate>
-    
+
     <Style TargetType="local:ProgressBar" >
       <Setter Property="HeightRequest" Value="200" ></Setter>
       <Setter Property="ControlTemplate" Value="{StaticResource sampleTemplate}" ></Setter>
     </Style>
-    
+
   </ContentPage.Resources>
 
-    <StackLayout HorizontalOptions="Center"
-                 VerticalOptions="Center">
-    <local:ProgressBar Title="newtitle"     />
-
-
-
-  </StackLayout>
-
+  <ContentPage.Content>
+    <local:NumericUpDownControl Style="{StaticResource NumericUpDownControlStyle}">
+    </local:NumericUpDownControl>
+  </ContentPage.Content>
 </ContentPage>
