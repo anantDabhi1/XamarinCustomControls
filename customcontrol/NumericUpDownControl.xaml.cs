@@ -14,33 +14,33 @@ namespace CustomControl
     {
         #region Depedency Properties
 
-        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(NumericUpDownControl));
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create(nameof(FontSize), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(25));
 
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(NumericUpDownControl));
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create(nameof(TextColor), typeof(Color), typeof(NumericUpDownControl), defaultValue: Color.Black);
 
-        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty ValueProperty = BindableProperty.Create(nameof(Value), typeof(string), typeof(NumericUpDownControl), defaultValue: null);
 
-        public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(double), typeof(NumericUpDownControl));
+        public static readonly BindableProperty MinimumProperty = BindableProperty.Create(nameof(Minimum), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(-5));
 
-        public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(double), typeof(NumericUpDownControl));
+        public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(999));
 
-        public static readonly BindableProperty IncrementIconProperty = BindableProperty.Create(nameof(IncrementIcon), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty IncrementIconProperty = BindableProperty.Create(nameof(IncrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "&#xe726;");
 
-        public static readonly BindableProperty DecrementIconProperty = BindableProperty.Create(nameof(DecrementIcon), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty DecrementIconProperty = BindableProperty.Create(nameof(DecrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "&#xe715;");
 
-        public static readonly BindableProperty WatermarkProperty = BindableProperty.Create(nameof(Watermark), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty WatermarkProperty = BindableProperty.Create(nameof(Watermark), typeof(string), typeof(NumericUpDownControl), "Enter Number");
 
-        public static readonly BindableProperty WatermarkColorProperty = BindableProperty.Create(nameof(WatermarkColor), typeof(Color), typeof(NumericUpDownControl));
+        public static readonly BindableProperty WatermarkColorProperty = BindableProperty.Create(nameof(WatermarkColor), typeof(Color), typeof(NumericUpDownControl), defaultValue: Color.Gray);
 
         public static readonly BindableProperty FontAttributeProperty = BindableProperty.Create(nameof(FontAttribute), typeof(FontAttributes), typeof(NumericUpDownControl));
 
-        public static readonly BindableProperty MaximumDigitsProperty = BindableProperty.Create(nameof(MaximumDigits), typeof(int), typeof(NumericUpDownControl));
+        public static readonly BindableProperty MaximumDigitsProperty = BindableProperty.Create(nameof(MaximumDigits), typeof(int), typeof(NumericUpDownControl), 5);
 
-        public static readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(NumericUpDownControl));
+        public static readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(NumericUpDownControl), defaultValue: true);
 
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(NumericUpDownControl), defaultValue: "{OnPlatform iOS=Sync FontIcons, Android=Sync FontIcons.ttf#, UWP=Sync FontIcons.ttf#Sync FontIcons}");
 
-        public static readonly BindableProperty StepValueProperty = BindableProperty.Create(nameof(StepValue), typeof(double), typeof(NumericUpDownControl));
+        public static readonly BindableProperty StepValueProperty = BindableProperty.Create(nameof(StepValue), typeof(double), typeof(NumericUpDownControl),Convert.ToDouble(2));
 
         public static readonly BindableProperty FormatStringProperty = BindableProperty.Create(nameof(FormatString), typeof(string), typeof(NumericUpDownControl));
 
