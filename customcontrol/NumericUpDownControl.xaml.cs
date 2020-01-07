@@ -267,34 +267,29 @@ namespace CustomControl
         #region Methods
         private void TapGestureRecognizer_PlusButton(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(EditorValue.Text))
+            double.TryParse(string.IsNullOrEmpty(Value) ? Minimum.ToString() : Value, out double editvalue);
+            if (editvalue < Minimum)
             {
-                decimal editvalue = Convert.ToDecimal(EditorValue.Text);
-                if (editvalue < Convert.ToDecimal(Minimum))
-                {
-                    editvalue = Convert.ToDecimal(Minimum);
-                }
-                editvalue = editvalue + Convert.ToDecimal(StepValue);
-                if (editvalue > Convert.ToDecimal(Maximum))
-                {
-                    editvalue = Convert.ToDecimal(Maximum);
-                }
-                EditorValue.Text = editvalue.ToString();
+                editvalue = Minimum;
             }
+            editvalue += StepValue;
+
+            if (editvalue > Maximum)
+            {
+                editvalue = Maximum;
+            }
+            Value = editvalue.ToString(FormatString);
         }
 
         private void TapGestureRecognizer_MinusButton(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(EditorValue.Text))
+            double.TryParse(string.IsNullOrEmpty(Value) ? Minimum.ToString() : Value, out double editvalue);
+            editvalue -= StepValue;
+            if (editvalue < Minimum)
             {
-                decimal editvalue = Convert.ToDecimal(EditorValue.Text);
-                editvalue = editvalue - Convert.ToDecimal(StepValue);
-                if (editvalue < Convert.ToDecimal(Minimum))
-                {
-                    editvalue = Convert.ToDecimal(Minimum);
-                }
-                EditorValue.Text = editvalue.ToString();
+                editvalue = Minimum;
             }
+            Value = editvalue.ToString(FormatString);
         }
 
         private void EditorValue_Unfocused(object sender, FocusEventArgs e)
@@ -330,7 +325,7 @@ namespace CustomControl
                     ((Editor)sender).Text = e.NewTextValue.Remove(e.NewTextValue.Length - 1);
                 }
 
-                else if (!decimal.TryParse(e.NewTextValue, out decimal decimalvalue))
+                else if (!decimal.TryParse(e.NewTextValue, out _))
                 {
                     ((Editor)sender).Text = e.NewTextValue;
                 }

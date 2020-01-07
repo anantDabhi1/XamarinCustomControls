@@ -6,24 +6,26 @@
              mc:Ignorable="d"
              Title="Custom Controls Xamarin"
              xmlns:local="clr-namespace:CustomControl;assembly=CustomControl"
+             xmlns:chipsControl="clr-namespace:CustomControl.ChipsControl;assembly=CustomControl"
+             
              x:Class="PrismSample.Views.MainPage">
   <ContentPage.Resources>
-
-    <ControlTemplate x:Key="sampleTemplate" >
-      <StackLayout  HeightRequest="50"  BackgroundColor="AliceBlue" >
-        <Label  Text="{TemplateBinding Title}"  HeightRequest="40" TextColor="Red" ></Label>
-      </StackLayout>
-    </ControlTemplate>
-
-    <Style TargetType="local:ProgressBar" >
-      <Setter Property="HeightRequest" Value="200" ></Setter>
-      <Setter Property="ControlTemplate" Value="{StaticResource sampleTemplate}" ></Setter>
+    <Style TargetType="Label" >
+      <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+      <Setter Property="VerticalTextAlignment" Value="Center" />
+      <Setter Property="Margin" Value="10" />
+      <Setter Property="TextColor" Value="Black" />
+      
     </Style>
 
   </ContentPage.Resources>
 
   <ContentPage.Content>
-    <local:NumericUpDownControl Style="{StaticResource NumericUpDownControlStyle}">
-    </local:NumericUpDownControl>
+    <StackLayout Orientation="Vertical" >
+      <Label Text="Numeric UpDown Control" />
+      <local:NumericUpDownControl Style="{StaticResource NumericUpDownControlStyle}" Controlbackgroundcolor="Transparent" TextColor="Green" />
+      <Label Text="Chips Conttrol" />
+      <chipsControl:ChipsControl Spacing="5" x:Name="chipsControl"  ></chipsControl:ChipsControl>
+    </StackLayout>
   </ContentPage.Content>
 </ContentPage>
