@@ -6,49 +6,55 @@
              xmlns:local="clr-namespace:CustomControl;assembly=CustomControl"
              xmlns:chipsControl="clr-namespace:CustomControl.ChipsControl;assembly=CustomControl"
              mc:Ignorable="d"
+              xmlns:starratingControl="clr-namespace:CustomControl.StarRatingControl;assembly=CustomControl"
              x:Class="CustomControlView.MainPage">
-    <ContentPage.Resources>
-        <Style TargetType="Label" >
-            <Setter Property="HorizontalOptions" Value="StartAndExpand" />
-            <Setter Property="VerticalTextAlignment" Value="Center" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="TextColor" Value="Black" />
-        </Style>
-        
-        <Style TargetType="local:NumericUpDownControl" x:Key="NumericUpDownControlStyle">
-             <!--<Setter Property="FontSize" Value="50" />-->
-            <!--<Setter Property="TextColor" Value="Black" />
+  <ContentPage.Resources>
+    <Style TargetType="Label" >
+      <Setter Property="HorizontalOptions" Value="StartAndExpand" />
+      <Setter Property="VerticalTextAlignment" Value="Center" />
+      <Setter Property="Margin" Value="10" />
+      <Setter Property="TextColor" Value="Black" />
+    </Style>
+
+    <Style TargetType="local:NumericUpDownControl" x:Key="NumericUpDownControlStyle">
+      <!--<Setter Property="FontSize" Value="50" />-->
+      <!--<Setter Property="TextColor" Value="Black" />
             <Setter Property="Value" Value="" />
             <Setter Property="Maximum" Value="100" />
             <Setter Property="Minimum" Value="-5"/>-->
-            <Setter Property="IncrementIcon" Value="&#xe726;" />
-            <Setter Property="DecrementIcon" Value="&#xe715;" />
-            <!--<Setter Property="Watermark" Value="Enter Number" />
+      <Setter Property="IncrementIcon" Value="&#xe726;" />
+      <Setter Property="DecrementIcon" Value="&#xe715;" />
+      <!--<Setter Property="Watermark" Value="Enter Number" />
             <Setter Property="WatermarkColor" Value="Gray" />
             <Setter Property="FontAttribute" Value="Bold" />
             <Setter Property="MaximumDigits" Value="5" />
             <Setter Property="IsEditable" Value="True" />-->
-            <Setter Property="FontFamily" Value="{OnPlatform iOS=Sync FontIcons, Android=Sync FontIcons.ttf#, UWP=Sync FontIcons.ttf#Sync FontIcons}" />
-            <Setter Property="StepValue" Value="2"/>
-            <Setter Property="FormatString" Value="0.###" />
-            <Setter Property="BackgroundColor" Value="Red" />
-            <Setter Property="Controlbackgroundcolor" Value="LightGray" />
-            <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
-            <Setter Property="VerticalOptions" Value="Center" />
-            <Setter Property="Margin" Value="10" />
-            <Setter Property="ControlMargin" Value="10"/>
-            <Setter Property="MinimumWidthRequest" Value="100" />
-            <Setter Property="MinimumHeightRequest" Value="150" />
-        </Style>
+      <Setter Property="FontFamily" Value="{OnPlatform iOS=Sync FontIcons, Android=Sync FontIcons.ttf#, UWP=Sync FontIcons.ttf#Sync FontIcons}" />
+      <Setter Property="StepValue" Value="2"/>
+      <Setter Property="FormatString" Value="0.###" />
+      <Setter Property="BackgroundColor" Value="Red" />
+      <Setter Property="Controlbackgroundcolor" Value="LightGray" />
+      <Setter Property="HorizontalOptions" Value="CenterAndExpand" />
+      <Setter Property="VerticalOptions" Value="Center" />
+      <Setter Property="Margin" Value="10" />
+      <Setter Property="ControlMargin" Value="10"/>
+      <Setter Property="MinimumWidthRequest" Value="100" />
+      <Setter Property="MinimumHeightRequest" Value="150" />
+    </Style>
 
-    </ContentPage.Resources>
+  </ContentPage.Resources>
 
-    <ContentPage.Content>
-        <StackLayout Orientation="Vertical" >
-            <Label Text="Numeric UpDown Control" />
-            <local:NumericUpDownControl Style="{StaticResource NumericUpDownControlStyle}"/>
-            <Label Text="Chips Conttrol" />
-            <chipsControl:ChipsControl Spacing="5" x:Name="chipsControl"  ></chipsControl:ChipsControl>
-        </StackLayout>
-    </ContentPage.Content>
+  <ContentPage.Content>
+   
+      <StackLayout Orientation="Vertical" >
+        <Label Text="Numeric UpDown Control" />
+        <local:NumericUpDownControl Style="{StaticResource NumericUpDownControlStyle}"/>
+        <Label Text="Chips Conttrol" />
+        <chipsControl:ChipsControl Spacing="5" x:Name="chipsControl"  ></chipsControl:ChipsControl>
+        <Label Text="Star Rating Control"></Label>
+        <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="5"  RatingChanged="OnRatingChanged"
+                                IsReadonly="false"  HorizontalOptions="Center"/>
+      </StackLayout>
+   
+  </ContentPage.Content>
 </ContentPage>

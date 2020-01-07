@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="Renderers\RatingBarRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -92,6 +93,10 @@
     <ProjectReference Include="..\CustomControlView\CustomControlView.csproj">
       <Project>{2DE287AA-44B4-48E4-A068-4AFE6B3A0BAD}</Project>
       <Name>CustomControlView</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CustomControl\CustomControl.csproj">
+      <Project>{F9B1F1C9-B2C4-499D-871B-7007DE187D91}</Project>
+      <Name>CustomControl</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

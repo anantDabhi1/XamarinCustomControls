@@ -47,5 +47,10 @@ namespace CustomControlView
             chipsControl.ItemsSource = ItemList;
             //Xamarin.Forms.ListView.ItemsSourceProperty
         }
+
+        private void OnRatingChanged(object sender, float e)
+        {
+            customRatingBar.Rating = e;
+        }
     }
 }
