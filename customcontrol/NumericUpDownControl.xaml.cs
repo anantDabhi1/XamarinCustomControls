@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,29 +19,27 @@ namespace CustomControl
 
         public static readonly BindableProperty MaximumProperty = BindableProperty.Create(nameof(Maximum), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(999));
 
-        public static readonly BindableProperty IncrementIconProperty = BindableProperty.Create(nameof(IncrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "&#xe726;");
+        public static readonly BindableProperty IncrementIconProperty = BindableProperty.Create(nameof(IncrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "");
 
-        public static readonly BindableProperty DecrementIconProperty = BindableProperty.Create(nameof(DecrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "&#xe715;");
+        public static readonly BindableProperty DecrementIconProperty = BindableProperty.Create(nameof(DecrementIcon), typeof(string), typeof(NumericUpDownControl), defaultValue: "");
 
         public static readonly BindableProperty WatermarkProperty = BindableProperty.Create(nameof(Watermark), typeof(string), typeof(NumericUpDownControl), "Enter Number");
 
         public static readonly BindableProperty WatermarkColorProperty = BindableProperty.Create(nameof(WatermarkColor), typeof(Color), typeof(NumericUpDownControl), defaultValue: Color.Gray);
 
-        public static readonly BindableProperty FontAttributeProperty = BindableProperty.Create(nameof(FontAttribute), typeof(FontAttributes), typeof(NumericUpDownControl));
+        public static readonly BindableProperty FontAttributeProperty = BindableProperty.Create(nameof(FontAttribute), typeof(FontAttributes), typeof(NumericUpDownControl), FontAttributes.Bold);
 
-        public static readonly BindableProperty MaximumDigitsProperty = BindableProperty.Create(nameof(MaximumDigits), typeof(int), typeof(NumericUpDownControl), 5);
+        public static readonly BindableProperty MaximumDigitsProperty = BindableProperty.Create(nameof(MaximumDigits), typeof(int), typeof(NumericUpDownControl), 6);
 
         public static readonly BindableProperty IsEditableProperty = BindableProperty.Create(nameof(IsEditable), typeof(bool), typeof(NumericUpDownControl), defaultValue: true);
 
-        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(NumericUpDownControl), defaultValue: "{OnPlatform iOS=Sync FontIcons, Android=Sync FontIcons.ttf#, UWP=Sync FontIcons.ttf#Sync FontIcons}");
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create(nameof(FontFamily), typeof(string), typeof(NumericUpDownControl), "Sync FontIcons.ttf#");
 
-        public static readonly BindableProperty StepValueProperty = BindableProperty.Create(nameof(StepValue), typeof(double), typeof(NumericUpDownControl),Convert.ToDouble(2));
+        public static readonly BindableProperty StepValueProperty = BindableProperty.Create(nameof(StepValue), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(2));
 
-        public static readonly BindableProperty FormatStringProperty = BindableProperty.Create(nameof(FormatString), typeof(string), typeof(NumericUpDownControl));
+        public static readonly BindableProperty FormatStringProperty = BindableProperty.Create(nameof(FormatString), typeof(string), typeof(NumericUpDownControl), defaultValue: "0.###");
 
-        public static readonly BindableProperty ControlbackgroundcolorProperty = BindableProperty.Create(nameof(Controlbackgroundcolor), typeof(Color), typeof(NumericUpDownControl));
-
-        public static readonly BindableProperty ControlMarginProperty = BindableProperty.Create(nameof(ControlMargin), typeof(double), typeof(NumericUpDownControl));
+        public static readonly BindableProperty ControlMarginProperty = BindableProperty.Create(nameof(ControlMargin), typeof(double), typeof(NumericUpDownControl), Convert.ToDouble(10));
 
         #endregion
 
@@ -239,18 +232,6 @@ namespace CustomControl
             }
         }
 
-        public Color Controlbackgroundcolor
-        {
-            get
-            {
-                return (Color)GetValue(ControlbackgroundcolorProperty);
-            }
-            set
-            {
-                SetValue(ControlbackgroundcolorProperty, value);
-            }
-        }
-
         public double ControlMargin
         {
             get
@@ -264,7 +245,7 @@ namespace CustomControl
         }
         #endregion
 
-        #region Methods
+        #region Control Events
         private void TapGestureRecognizer_PlusButton(object sender, EventArgs e)
         {
             double.TryParse(string.IsNullOrEmpty(Value) ? Minimum.ToString() : Value, out double editvalue);
@@ -294,16 +275,12 @@ namespace CustomControl
 
         private void EditorValue_Unfocused(object sender, FocusEventArgs e)
         {
-            var entry = sender as Editor;
-            if (!string.IsNullOrEmpty(entry.Text))
+            double.TryParse(string.IsNullOrEmpty(Value) ? Minimum.ToString() : Value, out double editvalue);
+            if (editvalue < Minimum)
             {
-                decimal editvalue = Convert.ToDecimal(entry.Text);
-                if (editvalue < Convert.ToDecimal(Minimum))
-                {
-                    editvalue = Convert.ToDecimal(Minimum);
-                }
-                entry.Text = editvalue.ToString();
+                editvalue = Minimum;
             }
+            Value = editvalue.ToString(FormatString);
         }
 
         private void EditorValue_TextChanged(object sender, TextChangedEventArgs e)
@@ -332,7 +309,7 @@ namespace CustomControl
 
                 else if (Convert.ToDecimal(e.NewTextValue) > Convert.ToDecimal(Maximum))
                 {
-                    ((Editor)sender).Text = Convert.ToString(Maximum);
+                    ((Editor)sender).Text = Maximum.ToString(FormatString);
                 }
                 else
                 {

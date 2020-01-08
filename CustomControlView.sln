@@ -4,10 +4,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.29613.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlView.Android", "CustomControlView.Android\CustomControlView.Android.csproj", "{9224A422-CDF1-4278-84C1-57A25FE79B4F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F9B1F1C9-B2C4-499D-871B-7007DE187D91} = {F9B1F1C9-B2C4-499D-871B-7007DE187D91}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlView.iOS", "CustomControlView.iOS\CustomControlView.iOS.csproj", "{021AB365-329F-4838-A623-A26CB1A8DE7B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlView", "CustomControlView\CustomControlView.csproj", "{14259D58-ED32-49AD-8E6B-78C1430E1396}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControlView", "CustomControlView\CustomControlView.csproj", "{14259D58-ED32-49AD-8E6B-78C1430E1396}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomControl", "CustomControl\CustomControl.csproj", "{F9B1F1C9-B2C4-499D-871B-7007DE187D91}"
 EndProject
