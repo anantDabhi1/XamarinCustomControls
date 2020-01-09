@@ -23,11 +23,11 @@
                 <Setter Property="BarTextColor" Value="{StaticResource TextColor}" />
             </Style>
 
-            <Style TargetType="Button">
+            <!--<Style TargetType="Button">
                 <Setter Property="BackgroundColor" Value="{StaticResource AccentColor}" />
                 <Setter Property="TextColor" Value="{StaticResource TextColor}" />
                 <Setter Property="CornerRadius" Value="15" />
-            </Style>
+            </Style>-->
 
             <Style TargetType="Button" x:Key="DarkButton">
                 <Setter Property="BackgroundColor" Value="{StaticResource PrimaryColor}" />

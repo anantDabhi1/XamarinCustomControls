@@ -10,9 +10,18 @@ namespace CustomControl.ChipsControl
     public class ChipsControl : Layout<View>
     {
         public static BindableProperty SpacingProperty = BindableProperty.Create(nameof(Spacing), typeof(Thickness), typeof(ChipsControl), new Thickness(6));
-        public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(ChipsControl), propertyChanged: ItemSourcePropertyChangedCallback);
+        public static BindableProperty ItemsSourceProperty = BindableProperty.Create(nameof(ItemsSource), typeof(IList), typeof(ChipsControl), propertyChanged: ItemSourcePropertyChangedCallback,defaultBindingMode: BindingMode.TwoWay);
         public static BindableProperty ChipsBackgroundColorProperty = BindableProperty.Create(nameof(ChipsBackgroundColor), typeof(Color), typeof(ChipsControl), Color.FromHex("#FFFFFF"));
         public static BindableProperty SelectedChipsBackgroundColorProperty = BindableProperty.Create(nameof(SelectedChipsBackgroundColor), typeof(Color), typeof(ChipsControl), Color.FromHex("#5949C0"));
+
+        public static BindableProperty ChipsMarginProperty = BindableProperty.Create(nameof(ChipsMargin), typeof(Thickness), typeof(ChipsControl), new Thickness(5));
+
+        
+        public Thickness ChipsMargin
+        {
+            get { return (Thickness)GetValue(ChipsMarginProperty); }
+            set { SetValue(ChipsMarginProperty, value);  }
+        }
 
         public Thickness Spacing
         {
@@ -35,25 +44,28 @@ namespace CustomControl.ChipsControl
         {
             if (newValue is IList)
             {
+                var chipsControl = bindable as ChipsControl;
                 var items = newValue as IList;
                 foreach (var item in items)
                 {
                     if (item is ChipsItem)
                     {
-                        var chipsControl = bindable as ChipsControl;
-                        chipsControl.Children.Add(CreateRandomBoxview(item as ChipsItem, chipsControl.ChipsBackgroundColor, chipsControl.SelectedChipsBackgroundColor));  // Creating a chip with one value of ItemList
+                        chipsControl.Children.Add(CreateRandomBoxview(item as ChipsItem, bindable as ChipsControl));  // Creating a chip with one value of ItemList
                     }
                 }
             }
         }
 
-        private static Frame CreateRandomBoxview(ChipsItem items, Color backgroundColor, Color selectedBackgroundColor)
+        private static Frame CreateRandomBoxview(ChipsItem items, ChipsControl chipsControl)
         {
+            Color backgroundColor = chipsControl.ChipsBackgroundColor;
+            Color selectedBackgroundColor = chipsControl.SelectedChipsBackgroundColor;
+
             var view = new Frame
             {
                 BackgroundColor = (items.IsSelected) ? backgroundColor : selectedBackgroundColor,
                 BorderColor = (items.IsSelected) ? selectedBackgroundColor : backgroundColor,
-                Padding = new Thickness(20, 10),
+                Padding = chipsControl.ChipsMargin,
                 CornerRadius = 20,
                 HasShadow = false
             };    // Creating New View for design as chip

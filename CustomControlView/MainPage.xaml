@@ -23,9 +23,9 @@
       <Label Text="Numeric UpDown Control" />
       <local:NumericUpDownControl Margin="10" BackgroundColor="LightGray" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
       <Label Text="Chips Control" />
-      <chipsControl:ChipsControl Spacing="5" x:Name="chipsControl" />
+      <chipsControl:ChipsControl Spacing="5"  ItemsSource="{Binding ItemList}"  ChipsMargin="2" />
       <Label Text="Star Rating Control" />
-      <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="5"  RatingChanged="OnRatingChanged"
+      <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="6"  RatingChanged="OnRatingChanged" 
                                 IsReadonly="false"  HorizontalOptions="Center"/>
     </StackLayout>
   </ContentPage.Content>
