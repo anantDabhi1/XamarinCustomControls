@@ -7,6 +7,7 @@
              xmlns:chipsControl="clr-namespace:CustomControl.ChipsControl;assembly=CustomControl"
              mc:Ignorable="d"
              xmlns:starratingControl="clr-namespace:CustomControl.StarRatingControl;assembly=CustomControl"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              x:Class="CustomControlView.MainPage">
   <ContentPage.Resources>
     <Style TargetType="Label" >
@@ -19,14 +20,29 @@
   </ContentPage.Resources>
 
   <ContentPage.Content>
+    <ScrollView>
     <StackLayout Orientation="Vertical" >
       <Label Text="Numeric UpDown Control" />
-      <local:NumericUpDownControl Margin="10" BackgroundColor="LightGray" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
+      <local:NumericUpDownControl Margin="0"  BackgroundColor="Transparent" VerticalOptions="Start" HorizontalOptions="CenterAndExpand"/>
       <Label Text="Chips Control" />
       <chipsControl:ChipsControl Spacing="5"  ItemsSource="{Binding ItemList}"  ChipsMargin="2" />
+      
+      
       <Label Text="Star Rating Control" />
-      <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="6"  RatingChanged="OnRatingChanged" 
-                                IsReadonly="false"  HorizontalOptions="Center"/>
+      <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="5"  RatingChanged="OnRatingChanged"  IsReadonly="false"  HorizontalOptions="Center"/>
+
+
+
+      <Label Text="Lottie Annimation control" />
+
+      <forms:AnimationView  BackgroundColor="White" HardwareAcceleration="True"
+                x:Name="AnimationView"  HeightRequest="200"
+                Animation="video_cam.json"  Speed="0.6" 
+                AutoPlay="True" Loop="true"
+                VerticalOptions="Start"
+                HorizontalOptions="FillAndExpand" />
+
     </StackLayout>
+    </ScrollView>
   </ContentPage.Content>
 </ContentPage>
