@@ -6,6 +6,7 @@
              xmlns:local="clr-namespace:CustomControl;assembly=CustomControl"
              xmlns:chipsControl="clr-namespace:CustomControl.ChipsControl;assembly=CustomControl"
              mc:Ignorable="d"
+             xmlns:footerbarControl ="clr-namespace:CustomControl.PopupMenuControl;assembly=CustomControl"
              xmlns:starratingControl="clr-namespace:CustomControl.StarRatingControl;assembly=CustomControl"
              x:Class="CustomControlView.MainPage">
   <ContentPage.Resources>
@@ -17,7 +18,7 @@
       <Setter Property="FontSize" Value="15"/>
     </Style>
   </ContentPage.Resources>
-
+  
   <ContentPage.Content>
     <StackLayout Orientation="Vertical" >
       <Label Text="Numeric UpDown Control" />
@@ -27,6 +28,7 @@
       <Label Text="Star Rating Control" />
       <starratingControl:CustomRatingBar x:Name="customRatingBar" MaxStars="6"  RatingChanged="OnRatingChanged" 
                                 IsReadonly="false"  HorizontalOptions="Center"/>
+      <footerbarControl:FooterToolbar Menuitems="{Binding Menuitems}" OnItemSelected="FooterToolbar_OnItemSelected"  VerticalOptions="EndAndExpand"  />
     </StackLayout>
   </ContentPage.Content>
 </ContentPage>

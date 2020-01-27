@@ -7,9 +7,12 @@ using Android.OS;
 using XamarinCustomControls.Droid.Renderers;
 using CustomControl.StarRatingControl;
 
+#pragma warning disable CS0612 // Type or member is obsolete
 [assembly: ExportRenderer(typeof(CustomRatingBar), typeof(RatingBarRenderer))]
+#pragma warning restore CS0612 // Type or member is obsolete
 namespace XamarinCustomControls.Droid.Renderers
 {
+    [System.Obsolete]
     class RatingBarRenderer : ViewRenderer<CustomRatingBar, RatingBar>
     {
         CustomRatingBar element;

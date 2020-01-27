@@ -5,12 +5,56 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using Xamarin.Forms;
 
-namespace CustomControlView.ViewModel
+namespace CustomControl.PopupMenuControl
 {
-   public abstract class BaseViewModel: INotifyPropertyChanged
+    public class FooterButton
     {
+        #region Private Variables
+        private bool _isEnable = true;
+        #endregion
+
+        #region Properties
+
+        public string Name { get; set; }
+
+        public string ImageURL { get; set; }
+
+        /// <summary>
+        /// Gets the opacity of image of toolbar.
+        /// </summary>
+        /// <value>
+        /// The opacity.
+        /// </value>
+        public double Opacity
+        {
+            get
+            {
+                return _isEnable ? 1 : 0.4;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets a value of image is enable or not in toolbar.
+        /// </summary>
+        /// <value>
+        ///   <c>true</c> if this instance is enable; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsEnable
+        {
+            get { return _isEnable; }
+            set
+            {
+                if (SetProperty(ref _isEnable, value))
+                {
+                    OnPropertyChanged(nameof(Opacity));
+                }
+            }
+        }
+        #endregion
+
         #region Methods
-        // <summary>
+
+        /// <summary>
         /// Sets the property.
         /// </summary>
         /// <typeparam name="T"></typeparam>
@@ -56,5 +100,6 @@ namespace CustomControlView.ViewModel
             }
         }
         #endregion
+
     }
 }

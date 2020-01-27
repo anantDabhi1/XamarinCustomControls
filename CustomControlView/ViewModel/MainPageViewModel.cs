@@ -1,4 +1,5 @@
 ﻿using CustomControl.ChipsControl;
+using CustomControl.PopupMenuControl;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -6,15 +7,72 @@ using System.Text;
 
 namespace CustomControlView.ViewModel
 {
-    public class MainPageViewModel :BaseViewModel
+    public class MainPageViewModel : BaseViewModel
     {
         private ObservableCollection<ChipsItem> _itemList;
+        private List<FooterButton> buttonList;
+        private List<string> _menuitems;
+        private List<string> _toolBarItems;
+
         public ObservableCollection<ChipsItem> ItemList
         {
             get;
             set;
         }
 
+        /// <summary>
+        /// Gets or sets the button list in Footer of page.
+        /// </summary>
+        /// <value>
+        /// The button list.
+        /// </value>
+        public List<FooterButton> ButtonList
+        {
+            get
+            {
+                if (buttonList == null)
+                {
+                    buttonList = new List<FooterButton>();
+                }
+                return buttonList;
+            }
+            set
+            {
+                SetProperty(ref buttonList, value);
+            }
+        }
+
+        public List<string> Menuitems
+        {
+            get
+            {
+                if (_menuitems == null)
+                {
+                    _menuitems = new List<string>();
+                }
+                return _menuitems;
+            }
+            set
+            {
+                SetProperty(ref _menuitems, value);
+            }
+        }
+
+        public List<string> ToolBarItems
+        {
+            get
+            {
+                if (_toolBarItems == null)
+                {
+                    _toolBarItems = new List<string>();
+                }
+                return _toolBarItems;
+            }
+            set
+            {
+                SetProperty(ref _toolBarItems, value);
+            }
+        }
 
         public MainPageViewModel()
         {
@@ -36,9 +94,9 @@ namespace CustomControlView.ViewModel
                 new ChipsItem{ItemName="Fourteen", IsSelected=true },
                 new ChipsItem{ItemName="Fifteen", IsSelected=false },
             };
-
+            Menuitems = new List<string> { "Close", "Delete" };
         }
 
-        
+
     }
 }

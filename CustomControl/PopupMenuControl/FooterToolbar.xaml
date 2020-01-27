@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:local="clr-namespace:CustomControl.Converter"
+             x:Class="CustomControl.PopupMenuControl.FooterToolbar">
+  <ContentView.Resources>
+    <ResourceDictionary>
+      <local:UrlToImageSourceConverter x:Key="UrlToImageSourceConverter"></local:UrlToImageSourceConverter>
+    </ResourceDictionary>
+  </ContentView.Resources>
+  <ContentView.Content>
+    <Grid ColumnSpacing="0" RowSpacing="0"  HeightRequest="65" >
+      <Grid.RowDefinitions>
+        <RowDefinition Height="Auto" />
+        <RowDefinition Height="1" />
+        <RowDefinition Height="Auto" />
+      </Grid.RowDefinitions>
+
+      <Grid Grid.Row="0"  VerticalOptions="Start"  >
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+      </Grid>
+      <BoxView Grid.Row="1"  HeightRequest="1" BackgroundColor="Black"   HorizontalOptions="FillAndExpand" />
+      <Grid Grid.Row="2" Margin="0" Padding="0"   ColumnSpacing="0" RowSpacing="0">
+        <Grid.ColumnDefinitions>
+          <ColumnDefinition Width="Auto" />
+          <ColumnDefinition Width="*" />
+          <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Button Grid.Column="0" HorizontalOptions="Start" Text="Options" Clicked="ShowPopup_Clicked"></Button>
+
+        <CollectionView Grid.Column="1" SelectionMode="Single" SelectionChanged="CollectionView_SelectionChanged" ItemsSource="{x:Binding ButtonList}" HorizontalOptions="Start"   Margin="0,5,0,5"  >
+          <CollectionView.ItemsLayout>
+            <LinearItemsLayout Orientation="Horizontal" />
+          </CollectionView.ItemsLayout>
+          <CollectionView.ItemTemplate>
+            <DataTemplate>
+              <Image Source="{Binding Path=ImageURL,Converter={StaticResource UrlToImageSourceConverter}}" Opacity="{Binding Opacity}" IsEnabled="{Binding IsEnable}" Margin="5,0,5,0" />
+            </DataTemplate>
+          </CollectionView.ItemTemplate>
+        </CollectionView>
+      </Grid>
+
+    </Grid>
+  </ContentView.Content>
+</ContentView>

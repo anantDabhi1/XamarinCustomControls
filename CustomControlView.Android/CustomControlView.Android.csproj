@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PopupEffect.cs" />
     <Compile Include="Renderers\RatingBarRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,9 +88,6 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CustomControlView\CustomControlView.csproj">
       <Project>{2DE287AA-44B4-48E4-A068-4AFE6B3A0BAD}</Project>
       <Name>CustomControlView</Name>
@@ -98,6 +96,9 @@
       <Project>{F9B1F1C9-B2C4-499D-871B-7007DE187D91}</Project>
       <Name>CustomControl</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\drawable\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
