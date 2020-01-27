@@ -6,6 +6,7 @@ using Android.Graphics.Drawables;
 using Android.OS;
 using XamarinCustomControls.Droid.Renderers;
 using CustomControl.StarRatingControl;
+using Android.Content;
 
 #pragma warning disable CS0612 // Type or member is obsolete
 [assembly: ExportRenderer(typeof(CustomRatingBar), typeof(RatingBarRenderer))]
@@ -17,6 +18,8 @@ namespace XamarinCustomControls.Droid.Renderers
     {
         CustomRatingBar element;
         RatingBar ratingBar;
+
+        public RatingBarRenderer(Context context) :base(context){ }
 
         protected override void OnElementChanged(ElementChangedEventArgs<CustomRatingBar> e)
         {
